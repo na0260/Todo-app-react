@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Itemlist = () => {
+const Itemlist = (props) => {
     return (
         <div>
             <div>
@@ -19,19 +19,24 @@ const Itemlist = () => {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>
-                                        <button className="btn btn-primary me-2">Edit</button>
-                                        <button className="btn btn-danger">Done</button>
-                                    </td>
-                                </tr>
+                                {props.item.map((items, index) =>
+                                    <tr key={items.id}>
+                                        <th scope="row">{index + 1}</th>
+                                        <td className={items.complete ? "text-decoration-line-through" : ""}>{items.desc}</td>
+                                        <td>
+                                            <button className="btn btn-primary me-2">Edit</button>
+                                            <button onClick={() => props.doneButton(items.id)}
+                                                    className="btn btn-danger">Done
+                                            </button>
+                                        </td>
+                                    </tr>
+                                )}
+
                                 </tbody>
                             </table>
                         </div>
                         <div className="d-flex justify-content-end mt-2">
-                            <button className="btn btn-danger">Clear List</button>
+                            <button onClick={props.clearButton} className="btn btn-danger">Clear List</button>
                         </div>
                     </div>
                 </div>
