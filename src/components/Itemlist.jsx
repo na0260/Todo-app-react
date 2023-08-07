@@ -24,9 +24,8 @@ const Itemlist = (props) => {
                                         <th scope="row">{index + 1}</th>
                                         <td className={items.complete ? "text-decoration-line-through" : ""}>{items.desc}</td>
                                         <td>
-                                            <button className="btn btn-primary me-2">Edit</button>
                                             <button onClick={() => props.doneButton(items.id)}
-                                                    className="btn btn-danger">Done
+                                                    className={!items.complete ? "btn btn-primary" : "btn btn-danger"}> {!items.complete ? "Done" : "Not Done"}
                                             </button>
                                         </td>
                                     </tr>

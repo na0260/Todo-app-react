@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Itemlist from "./Itemlist.jsx";
+import Footer from "./Footer.jsx";
 
 const AddItemsForm = () => {
     const [item, setItem] = useState([]);
@@ -24,6 +25,7 @@ const AddItemsForm = () => {
     const handleClear = (e) => {
         e.preventDefault();
         setItem([]);
+
     }
 
     return (
@@ -48,6 +50,7 @@ const AddItemsForm = () => {
                 </div>
             </div>
             <Itemlist item={item} clearButton={handleClear} doneButton={handleProgress}/>
+            <Footer item={item}/>
         </div>
     );
 };
